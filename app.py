@@ -3,7 +3,7 @@ from transformers import pipeline
 import PyPDF2
 
 # Load summarization pipeline
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
 
 # Function to summarize text
 def summarize_text(text):
