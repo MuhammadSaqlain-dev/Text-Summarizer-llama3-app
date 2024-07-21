@@ -1,14 +1,6 @@
 import streamlit as st
 from transformers import pipeline
 import PyPDF2
-import subprocess
-import threading
-
-def run_streamlit():
-    subprocess.run(['streamlit', 'run', 'app.py'])
-
-def run_health_check():
-    subprocess.run(['python', 'health_check.py'])
 
 # Load summarization pipeline
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
@@ -107,13 +99,3 @@ with col2:
             st.error("Please enter some text. ⚠️")
 
 st.write("### 🤖 Project created using Llama 3")
-
-if __name__ == '__main__':
-    streamlit_thread = threading.Thread(target=run_streamlit)
-    health_check_thread = threading.Thread(target=run_health_check)
-
-    streamlit_thread.start()
-    health_check_thread.start()
-
-    streamlit_thread.join()
-    health_check_thread.join()
